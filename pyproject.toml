@@ -1,7 +1,30 @@
 [project]
 name = "perception-data-stack"
 version = "0.1.0"
-description = "Add your description here"
+description = "Config-driven perception dataset engine"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+
+# Core Engine Requirements (The "Must-Haves")
+dependencies = [
+    "hydra-core>=1.3.2",
+    "hydra-zen>=0.12.0",
+    "pydantic>=2.7.0",
+    "loguru>=0.7.2",
+    "rich>=13.7.1",
+]
+
+[project.optional-dependencies]
+# Tools for development and quality guardrails
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.4.0",
+    "black>=24.0.0",
+    "mypy>=1.10.0",
+    "pre-commit>=3.7.0",
+]
+# Specialized data handling
+data = []
+
+[tool.uv]
+managed = true
