@@ -1,0 +1,7 @@
+# configs/config.yaml
+
+defaults:
+  - dataset: demo
+  - source: dummy
+  - storage: local
+  - _self_
