@@ -14,8 +14,12 @@ dependencies = [
     "rich>=13.7.1",
 ]
 
+# DATA is a "feature" of the tool, so keep it as an extra
 [project.optional-dependencies]
-# Tools for development and quality guardrails
+data = []
+
+# DEV is "maintenance" for the tool, so use a group
+[dependency-groups]
 dev = [
     "pytest>=8.0.0",
     "ruff>=0.4.0",
@@ -23,8 +27,6 @@ dev = [
     "mypy>=1.10.0",
     "pre-commit>=3.7.0",
 ]
-# Specialized data handling
-data = []
 
 [tool.uv]
 managed = true
