@@ -1,0 +1,2 @@
+type: LocalStorageBackend
+root: perception-data-stack/artifacts
