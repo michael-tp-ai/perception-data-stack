@@ -30,3 +30,11 @@ dev = [
 
 [tool.uv]
 managed = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# This part tells Hatch to find your package specifically in the src/ directory
+[tool.hatch.build.targets.wheel]
+packages = ["src/perception_stack"]

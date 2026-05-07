@@ -400,7 +400,7 @@ wheels = [
 [[package]]
 name = "perception-data-stack"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "hydra-core" },
     { name = "hydra-zen" },
