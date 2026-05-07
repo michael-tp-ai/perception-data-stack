@@ -5,3 +5,63 @@
 
 ### Link to Project Overview
 https://docs.google.com/document/d/17J5JO49rCufLDllJvY_zz0C7qw4GaOJGLJXC3pMLcJk/edit?tab=t.0
+
+---
+
+## 🛠️ Developer Guide
+
+### 1. Environment Setup
+We use `uv` for dependency management and `pre-commit` to ensure code quality.
+```bash
+# Install git hooks (do this once)
+uv run pre-commit install
+```
+
+### 2. The Commit Loop (READ THIS)
+
+Pre-commit hooks run automatically when you create a commit. They check staged files for formatting, linting, import ordering, type errors, and basic file hygiene.
+
+The normal flow is:
+
+1. **Check:** Ruff, Mypy, and basic file hooks inspect your staged changes.
+2. **Auto-fix:** Ruff may rewrite files to fix formatting, imports, or simple lint issues.
+3. **Abort:** If any hook modifies files, the commit stops. This is expected.
+4. **Review:** Inspect the changes.
+5. **Re-stage and commit:** Add the updated files and run the commit again.
+
+```bash
+git add .
+git commit -m "your message"
+````
+
+If the commit fails because files were auto-fixed, run:
+
+```bash
+git status
+git add .
+git commit -m "your message"
+```
+
+Rule of thumb: if a hook changed files, review them, re-stage them, and commit again.
+
+---
+
+### 3. Manual Quality Toolkit
+If you want to run checks manually without committing, use these commands:
+
+| Task | Command |
+| :--- | :--- |
+| **Full Suite** | `uv run pre-commit run --all-files` |
+| **Lint & Fix** | `uv run ruff check --fix .` |
+| **Format** | `uv run ruff format .` |
+| **Type Check** | `uv run mypy .` |
+| **Run Tests** | `uv run pytest` |
+| **Verify Config** | `uv run python scripts/check_config.py` |
+
+---
+
+### Why this matters
+By following this workflow, we guarantee that the `main` branch stays:
+* **Formatted:** No more arguments about tabs vs. spaces.
+* **Typed:** Fewer "NoneType" crashes in production.
+* **Validated:** Config files always match our Pydantic contracts.
