@@ -1,7 +1,7 @@
 # """
 # Acts as a "Dry Run" linter. 
-# It simulates Hydra composition and Pydantic validation to ensure YAML files match the project's data contract without 
-# initializing the full perception engine.
+# It simulates Hydra composition and Pydantic validation to ensure YAML files match the project's 
+# data contract without initializing the full perception engine.
 
 # Usage
 # uv run python scripts/check_config.py
@@ -12,12 +12,14 @@
 # 1. CI/CD Gatekeeper
 # Context: GitHub Actions / GitLab CI.
 # Role: Automatically runs on every Pull Request.
-# Impact: Blocks merging if configurations are structurally invalid (typos, missing fields, SemVer violations).
+# Impact: Blocks merging if configurations are structurally invalid 
+#  (typos, missing fields, SemVer violations).
 
 # 2. Production Pre-Flight
 # Context: Docker Entrypoint / Kubernetes Pod.
 # Role: Runs as the first command in the startup sequence.
-# Impact: Prevents allocating expensive GPU or simulation resources (Isaac Sim) if the runtime configuration is destined to fail.
+# Impact: Prevents allocating expensive GPU or simulation resources (Isaac Sim) if the runtime
+#  configuration is destined to fail.
 # """
 import os
 import sys
@@ -42,7 +44,10 @@ def run_check():
             
             # The return value is our RootConfig object
             validated_cfg = load_and_validate_config(raw_cfg)
-            logger.success(f"✅ Project '{validated_cfg.project_name}' [Dataset: {validated_cfg.dataset.name}] is valid.")
+            logger.success(
+            f"✅ Project '{validated_cfg.project_name}' "
+            f"[Dataset: {validated_cfg.dataset.name}] is valid."
+)
             
             # --- INSPECTION BLOCK ---
             console.print("\n[bold cyan]Validated RootConfig Inspection:[/bold cyan]")
@@ -53,7 +58,10 @@ def run_check():
             
             # You can also access fields directly via dot notation
             console.print(f"[green]✔[/green] Project: [bold]{validated_cfg.project_name}[/bold]")
-            console.print(f"[green]✔[/green] Source Type: [yellow]{validated_cfg.source.type}[/yellow]")
+            console.print(
+            f"[green]✔[/green] Source Type: "
+            f"[yellow]{validated_cfg.source.type}[/yellow]"
+)
             # ------------------------
             
     except Exception as e:
