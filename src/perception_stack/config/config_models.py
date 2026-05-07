@@ -1,37 +1,39 @@
-from typing import List, Optional, Dict, Any
+from typing import List, Dict, Any
 from pydantic import BaseModel, Field, ConfigDict
 
 class ComponentConfig(BaseModel):
-    """Base schema for modular components (Sources, Annotators, etc.)"""
-    model_config = ConfigDict(extra="forbid") # Prevents unrecognized keys
+    """Machinery: Base for pluggable modules."""
+    model_config = ConfigDict(extra="forbid", validate_default=True)
     
-    type: str = Field(..., description="The registry key for the component implementation")
-    enabled: bool = Field(default=True, description="Whether to execute this component")
-    params: Dict[str, Any] = Field(default_factory=dict, description="Component-specific arguments")
+    type: str = Field(..., description="Registry key for implementation")
+    enabled: bool = True
+    params: Dict[str, Any] = Field(default_factory=dict)
 
 class SourceConfig(ComponentConfig):
-    """Specific configuration for data ingestion"""
-    name: str = Field(..., description="Logical name of the data source")
+    """Machinery: Intent for data ingestion."""
+    name: str = Field(..., min_length=1)
+    path: str | None = None
 
 class StorageConfig(ComponentConfig):
-    """Specific configuration for data persistence"""
-    root_path: str = Field(default="artifacts/datasets", description="Base directory for outputs")
+    """Machinery: Intent for data persistence."""
+    root_path: str = "artifacts/datasets"
 
 class DatasetConfig(BaseModel):
-    """ The Root Configuration Object for a Dataset Build """
+    """Metadata: Describes the 'What' of the output."""
     model_config = ConfigDict(extra="forbid")
+    
+    name: str = Field(..., min_length=1)
+    version: str = Field(..., pattern=r"^\d+\.\d+\.\d+$")
+    description: str | None = None
+
+class RootConfig(BaseModel):
+    """The Root: Aggregates Identity, Metadata, and Machinery."""
+    model_config = ConfigDict(extra="forbid", validate_default=True)
 
     project_name: str = Field(..., min_length=1)
-    version: str = Field(..., pattern=r"^\d+\.\d+\.\d+$") # Enforces SemVer (e.g. 1.0.2)
-    
-    # Core Pipeline Steps
+    dataset: DatasetConfig
     source: SourceConfig
     storage: StorageConfig
     
-    # Modular Components
     annotators: List[ComponentConfig] = Field(default_factory=list)
     hooks: List[ComponentConfig] = Field(default_factory=list)
-    
-    # Optional metadata
-    description: Optional[str] = None
-    tags: List[str] = Field(default_factory=list)

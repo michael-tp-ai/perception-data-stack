@@ -1,2 +1,18 @@
+# StorageConfig - configs/storage/local.yaml
+# Describes where dataset artifacts should be written.
+#
+# Required fields:
+# - type: registry key for the storage implementation
+#
+# Optional fields:
+# - enabled: boolean, defaults to true
+# - root_path: output root directory, defaults to artifacts/datasets
+# - params: component-specific constructor arguments, defaults to {}
+#
+# Unknown fields are rejected.
+# Note: use `root_path` for storage output location.
+
 type: LocalStorageBackend
-root: perception-data-stack/artifacts
+# enabled: true
+# root_path: artifacts/datasets
+# params: {}

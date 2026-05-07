@@ -1,7 +1,34 @@
-# configs/config.yaml
+# RootConfig - configs/config.yaml
+# This is the main Hydra entrypoint.
+# Hydra uses the defaults list to compose the final runtime config.
+# Pydantic validates the final composed config against RootConfig.
+#
+# Required root fields:
+# - project_name: non-empty string
+# - dataset: loaded from configs/dataset/*.yaml
+# - source: loaded from configs/source/*.yaml
+# - storage: loaded from configs/storage/*.yaml
+#
+# Optional root fields:
+# - annotators: list of ComponentConfig objects, defaults to []
+# - hooks: list of ComponentConfig objects, defaults to []
+#
+# Optional:
+# annotators:
+#   - type: DummyAnnotator
+#     enabled: true
+#     params: {}
+#
+# hooks:
+#   - type: LoggingHook
+#     enabled: true
+#     params: {}
+
 
 defaults:
   - dataset: demo
   - source: dummy
   - storage: local
   - _self_
+
+project_name: perception_stack_demo

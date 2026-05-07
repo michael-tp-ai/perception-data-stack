@@ -1,2 +1,20 @@
+# SourceConfig - configs/source/dummy.yaml
+# Describes the input data source.
+#
+# Required fields:
+# - type: registry key for the source implementation
+# - name: non-empty source name
+#
+# Optional fields:
+# - enabled: boolean, defaults to true
+# - path: input path, defaults to null
+# - params: component-specific constructor arguments, defaults to {}
+#
+# Unknown fields are rejected.
+# Note: use `path` for source input location, not `root_path`.
+
 type: DummySource
-root: example/path
+name: dummy
+# path: data/raw/demo
+# enabled: true
+# params: {}
