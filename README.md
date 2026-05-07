@@ -34,15 +34,13 @@ git add .
 git commit -m "your message"
 ````
 
-If the commit fails because files were auto-fixed, run:
+If the commit fails because the .pre-commit auto-fixed files, review the changes, re-stage them, and commit again:
 
 ```bash
 git status
 git add .
 git commit -m "your message"
 ```
-
-Rule of thumb: if a hook changed files, review them, re-stage them, and commit again.
 
 ---
 
