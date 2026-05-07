@@ -1,5 +1,7 @@
-from typing import List, Dict, Any
-from pydantic import BaseModel, Field, ConfigDict
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field
+
 
 class ComponentConfig(BaseModel):
     """Machinery: Base for pluggable modules."""
@@ -7,7 +9,7 @@ class ComponentConfig(BaseModel):
     
     type: str = Field(..., description="Registry key for implementation")
     enabled: bool = True
-    params: Dict[str, Any] = Field(default_factory=dict)
+    params: dict[str, Any] = Field(default_factory=dict)
 
 class SourceConfig(ComponentConfig):
     """Machinery: Intent for data ingestion."""
@@ -35,5 +37,5 @@ class RootConfig(BaseModel):
     source: SourceConfig
     storage: StorageConfig
     
-    annotators: List[ComponentConfig] = Field(default_factory=list)
-    hooks: List[ComponentConfig] = Field(default_factory=list)
+    annotators: list[ComponentConfig] = Field(default_factory=list)
+    hooks: list[ComponentConfig] = Field(default_factory=list)

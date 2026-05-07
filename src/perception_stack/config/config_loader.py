@@ -1,7 +1,9 @@
-from omegaconf import OmegaConf, DictConfig
-from pydantic import ValidationError
 from loguru import logger
+from omegaconf import DictConfig, OmegaConf
+from pydantic import ValidationError
+
 from perception_stack.config.config_models import RootConfig
+
 
 def load_and_validate_config(cfg: DictConfig) -> RootConfig:
     """Manual gatekeeper for Hierarchical Configs."""

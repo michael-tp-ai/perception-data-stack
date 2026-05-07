@@ -21,7 +21,8 @@
 # """
 import os
 import sys
-from hydra import initialize_config_dir, compose
+
+from hydra import compose, initialize_config_dir
 from loguru import logger
 from rich.console import Console
 from rich.panel import Panel
