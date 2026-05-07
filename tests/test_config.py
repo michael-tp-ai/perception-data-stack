@@ -1,3 +1,11 @@
+"""
+-v verbose
+-vv extra verbose
+
+Usage:
+uv run pytest tests/test_config.py -v
+
+ """
 import pytest
 from pydantic import ValidationError
 from perception_stack.config.config_models import RootConfig

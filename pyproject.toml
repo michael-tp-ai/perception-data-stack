@@ -38,3 +38,34 @@ build-backend = "hatchling.build"
 # This part tells Hatch to find your package specifically in the src/ directory
 [tool.hatch.build.targets.wheel]
 packages = ["src/perception_stack"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# src layout support
+src = ["src"]
+
+[tool.ruff.lint]
+# E: pycodestyle, F: Pyflakes, I: isort, N: pep8-naming, UP: pyupgrade
+select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["D100", "D104"] # Ignore missing docstrings in public modules/packages
+
+[tool.ruff.lint.isort]
+known-first-party = ["perception_stack"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src", "scripts"]
+strict = true
+ignore_missing_imports = true
+
+# Specifically handle pydantic
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "hydra.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "omegaconf.*"
+ignore_missing_imports = true
