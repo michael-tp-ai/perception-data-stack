@@ -9,7 +9,7 @@ def load_and_validate_config(cfg: DictConfig) -> RootConfig:
     """Manual gatekeeper for Hierarchical Configs."""
     # Resolve ${vars} and convert to plain dict
     raw_dict = OmegaConf.to_container(cfg, resolve=True)
-    
+
     try:
         # Instantiate the root hierarchy
         return RootConfig(**raw_dict)

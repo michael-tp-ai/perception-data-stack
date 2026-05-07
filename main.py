@@ -1,4 +1,4 @@
-""" Temp file for testing on the go - will remove for actual production """
+"""Temp file for testing on the go - will remove for actual production"""
 
 # def main():
 #     print("Hello from perception-data-stack!")
@@ -20,7 +20,6 @@
 #         if item.is_dir():
 #             extension = "    " if is_last else "│   "
 #             print_tree(item, prefix + extension)
-
 
 
 # if __name__ == "__main__":
