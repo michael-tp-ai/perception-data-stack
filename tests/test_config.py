@@ -1,6 +1,6 @@
 import pytest
 from pydantic import ValidationError
-from src.perception_stack.config.config_models import RootConfig
+from perception_stack.config.config_models import RootConfig
 
 def test_nested_validation_failure():
     """Ensure errors in the nested 'dataset' model are caught."""
