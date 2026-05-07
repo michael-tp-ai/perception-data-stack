@@ -3,7 +3,7 @@
 #
 # Required fields:
 # - name: non-empty dataset name
-# - version: semantic version string in MAJOR.MINOR.PATCH format, e.g. 0.1.0
+# - version: str - semantic version string in MAJOR.MINOR.PATCH format, e.g. "0.1.0"
 #
 # Optional fields:
 # - description: human-readable description
@@ -11,5 +11,5 @@
 # Unknown fields are rejected.
 
 name: demo
-version: 0.1.0
+version: "0.1.0"
 description: No-op demo dataset for config validation.

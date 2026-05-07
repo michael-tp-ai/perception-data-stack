@@ -13,8 +13,9 @@ def test_nested_validation_failure():
     with pytest.raises(ValidationError) as excinfo:
         RootConfig(**data)
     
-    # Verify the error path points correctly into the nested model
-    assert "dataset -> version" in str(excinfo.value)
+    # Pydantic V2 uses dots for paths in its string representation
+    # The output will look like: "dataset.version"
+    assert "dataset.version" in str(excinfo.value)
 
 def test_root_strictness():
     """Ensure extra keys at the root are forbidden."""

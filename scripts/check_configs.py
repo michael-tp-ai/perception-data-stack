@@ -8,7 +8,6 @@ uv run python scripts/check_config.py
 
 Success Criteria
 Returns exit code 0 and logs:
-
 ✅ Project '[name]' [Dataset: [version]] is valid.
 
 ######
