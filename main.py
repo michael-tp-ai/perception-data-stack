@@ -1,15 +1,19 @@
-"""Temp file for testing on the go - will remove for actual production"""
+# """Temp file for testing on the go - will remove for actual production"""
+
+# from pathlib import Path
+
 
 # def main():
 #     print("Hello from perception-data-stack!")
-# from pathlib import Path
+
 
 # IGNORE = {".git", "__pycache__", ".pytest_cache", ".venv", "venv"}
+
 
 # def print_tree(path: Path, prefix: str = ""):
 #     items = sorted(
 #         [p for p in path.iterdir() if p.name not in IGNORE],
-#         key=lambda p: (p.is_file(), p.name.lower())
+#         key=lambda p: (p.is_file(), p.name.lower()),
 #     )
 
 #     for index, item in enumerate(items):
