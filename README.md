@@ -30,11 +30,6 @@ We use VS Code DevContainers + Docker to guarantee a consistent Linux environmen
 
 *Note: The first boot may take 1-3 minutes to build the image. Subsequent boots are nearly instant.*
 
-#### How it Works
-* **Invisible Environment:** `uv` installs dependencies into a secure, hidden folder (`/opt/.venv`) inside the container. This prevents OS-level collisions with your local machine.
-* **Pre-configured IDE:** Ruff (linting), Mypy (typing), and Pytest are auto-installed and bound to VS Code.
-* **Shared Source:** Your code and Git history are perfectly synced between your host and the container.
-
 ### Reopening the Project
 If you close VS Code and want to return to the environment:
 1. Use `File > Open Folder...` to select the `perception-data-stack` directory.
@@ -42,9 +37,15 @@ If you close VS Code and want to return to the environment:
 2. When the pop-up appears in the bottom-right, click **Reopen in Container**.
    *Alternatively, click the green/blue icon in the bottom-left corner and select "Reopen in Container".*
 
+### ⚠️ Infrastructure Guardrails
+The `.devcontainer/` directory defines the "Factory Floor" for the entire team.
+
+* **Modify with Caution:** Changes to the `Dockerfile` or `devcontainer.json` affect every developer on the project.
+* **Pull Request Policy:** Any changes to any files in this directory should be submitted as a standalone PR and verified to build successfully before merging.
+
 
 ---
-## Code Quality & Git Hooks
+## Code Quality & Committing
 
 We use `pre-commit` to ensure all code meets our standards before it ever reaches GitHub.
 
