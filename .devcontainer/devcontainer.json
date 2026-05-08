@@ -18,6 +18,6 @@
       ]
     }
   },
-  "postCreateCommand": "uv sync --all-extras",
+  "postCreateCommand": "uv sync --all-extras && uv run pre-commit install",
   "remoteUser": "root"
 }
