@@ -50,6 +50,7 @@ Pre-commit hooks run automatically whenever you `git commit`.
 4. Review the changes, `git add` the updated files, and commit again.
 
 ```bash
+git status
 git add .
 git commit -m "your message"
 
