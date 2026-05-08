@@ -35,6 +35,14 @@ We use VS Code DevContainers + Docker to guarantee a consistent Linux environmen
 * **Pre-configured IDE:** Ruff (linting), Mypy (typing), and Pytest are auto-installed and bound to VS Code.
 * **Shared Source:** Your code and Git history are perfectly synced between your host and the container.
 
+### Reopening the Project
+If you close VS Code and want to return to the environment:
+1. Use `File > Open Folder...` to select the `perception-data-stack` directory.
+   *Note: You must be inside the project folder for VS Code to detect the container.*
+2. When the pop-up appears in the bottom-right, click **Reopen in Container**.
+   *Alternatively, click the green/blue icon in the bottom-left corner and select "Reopen in Container".*
+
+
 ---
 ## Code Quality & Git Hooks
 
