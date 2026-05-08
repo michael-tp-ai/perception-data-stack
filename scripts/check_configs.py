@@ -1,26 +1,15 @@
-# """
-# Acts as a "Dry Run" linter.
-# It simulates Hydra composition and Pydantic validation to ensure YAML files match the project's
-# data contract without initializing the full perception engine.
+"""
+Acts as a "Dry Run" linter.
+It simulates Hydra composition and Pydantic validation to ensure YAML files match
+the project's data contract without initializing the full perception engine.
 
-# Usage
-# uv run python scripts/check_config.py
+Usage
+uv run python scripts/check_config.py
 
-# ######
-# PROPOSED EVENTUAL INTEGRATION
-# Integration Strategy
-# 1. CI/CD Gatekeeper
-# Context: GitHub Actions / GitLab CI.
-# Role: Automatically runs on every Pull Request.
-# Impact: Blocks merging if configurations are structurally invalid
-#  (typos, missing fields, SemVer violations).
+To Do:
+ - Add logic to check/verify values (paths, parameters etc)
+"""
 
-# 2. Production Pre-Flight
-# Context: Docker Entrypoint / Kubernetes Pod.
-# Role: Runs as the first command in the startup sequence.
-# Impact: Prevents allocating expensive GPU or simulation resources (Isaac Sim) if the runtime
-#  configuration is destined to fail.
-# """
 import os
 import sys
 
