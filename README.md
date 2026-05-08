@@ -8,7 +8,7 @@ https://docs.google.com/document/d/17J5JO49rCufLDllJvY_zz0C7qw4GaOJGLJXC3pMLcJk/
 
 ---
 
-## 🛠️ Developer Guide
+## Developer Guide
 
 ### 1. Environment Setup
 We use `uv` for dependency management and `pre-commit` to ensure code quality.
@@ -58,8 +58,9 @@ If you want to run checks manually without committing, use these commands:
 
 ---
 
-### Why this matters
-By following this workflow, we guarantee that the `main` branch stays:
-* **Formatted:** No more arguments about tabs vs. spaces.
-* **Typed:** Fewer "NoneType" crashes in production.
-* **Validated:** Config files always match our Pydantic contracts.
+## System Health Check
+We provide a "Doctor" script to verify your local environment is correctly configured for development. Run this after your first setup or whenever you encounter unexpected environment errors.
+
+```bash
+uv run python scripts/doctor.py
+```
