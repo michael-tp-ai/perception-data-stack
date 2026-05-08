@@ -1,0 +1,23 @@
+{
+  "name": "Perception Data Stack",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/.venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "ms-python.mypy-type-checker",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  },
+  "postCreateCommand": "uv sync --all-extras",
+  "remoteUser": "root"
+}
