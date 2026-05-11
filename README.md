@@ -13,7 +13,8 @@ This project uses a "Container-First" workflow to ensure that every developer ha
 
 ## Development Environment (DevContainer)
 
-We use VS Code DevContainers + Docker to guarantee a consistent Linux environment. **You do not need to install Python or manage virtual environments on your local machine.**
+We use VS Code DevContainers + Docker to guarantee a consistent Linux environment. 
+**You do not need to install Python or manage virtual environments on your local machine.**
 
 ### Prerequisites
 1. **Docker Desktop** installed and running.
@@ -41,6 +42,7 @@ If you close VS Code and want to return to the environment:
 The `.devcontainer/` directory defines the "Factory Floor" for the entire team.
 
 * **Modify with Caution:** Changes to the `Dockerfile` or `devcontainer.json` affect every developer on the project.
+  
 * **Pull Request Policy:** Any changes to any files in this directory should be submitted as a standalone PR and verified to build successfully before merging.
 
 
