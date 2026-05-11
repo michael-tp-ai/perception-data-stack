@@ -38,7 +38,7 @@ If you close VS Code and want to return to the environment:
 2. When the pop-up appears in the bottom-right, click **Reopen in Container**.
    *Alternatively, click the green/blue icon in the bottom-left corner and select "Reopen in Container".*
 
-### ⚠️ Infrastructure Guardrails
+### Infrastructure Guardrails
 The `.devcontainer/` directory defines the "Factory Floor" for the entire team.
 
 * **Modify with Caution:** Changes to the `Dockerfile` or `devcontainer.json` affect every developer on the project.
