@@ -1,12 +1,12 @@
 """
 Runtime context builder.
 
+This module defines the BuildContext data model and the factory function
+required to initialize it from a validated RootConfig.
+
 Workflow:
     YAML Configs -> RootConfig (Validate) -> BuildContext (Initialize - THIS FILE) -> ...
     -> Registry -> Factory -> Runner -> ...
-
-This module defines the BuildContext data model and the factory function
-required to initialize it from a validated RootConfig.
 """
 
 from datetime import datetime, timezone
@@ -60,6 +60,8 @@ class BuildContext(BaseModel):
     # Reference to mutable state container
     manifest_accumulator: ManifestAccumulator = Field(default_factory=ManifestAccumulator)
 
+    # Defines a read-only attribute that is dynamically computed from class fields.
+    # This allows 'artifact_namespace' to be accessed like a variable (context.artifact_namespace)
     @property
     def artifact_namespace(self) -> str:
         """
