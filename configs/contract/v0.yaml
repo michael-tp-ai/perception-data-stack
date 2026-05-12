@@ -1,0 +1,12 @@
+# ContractConfig - configs/contract/v0.yaml
+# Describes the data contract and ontology versions expected for the build.
+# This ensures downstream consumers know exactly what schema the data conforms to.
+#
+# Required fields:
+# - schema_version: str - version of the canonical sample schema, e.g., "v0"
+# - ontology_version: str - version of the label/class ontology, e.g., "v0"
+#
+# Unknown fields are rejected.
+
+schema_version: "v0"
+ontology_version: "v0"
