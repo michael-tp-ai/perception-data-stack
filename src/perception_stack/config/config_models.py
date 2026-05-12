@@ -5,6 +5,10 @@ ensuring all required fields, types, and contracts are correct before execution.
 
 The resulting `RootConfig` object serves as the single, strongly-typed source
 of truth used to initialize the engine's BuildContext and ComponentFactory.
+
+Workflow
+YAML Configs -> RootConfig (Validate - THIS FILE) -> BuildContext (Initialize) -> ...
+    -> Registry -> Factory -> Runner -> ...
 """
 
 from typing import Any
