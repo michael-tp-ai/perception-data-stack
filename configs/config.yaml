@@ -29,6 +29,7 @@ defaults:
   - dataset: demo
   - source: dummy
   - storage: local
+  - contract: v0
   - _self_
 
 project_name: perception_stack_demo
