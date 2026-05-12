@@ -1,3 +1,12 @@
+"""
+This module defines the strict Pydantic schemas used to validate the raw
+YAML configurations loaded by Hydra. It acts as the pipeline's "gatekeeper,"
+ensuring all required fields, types, and contracts are correct before execution.
+
+The resulting `RootConfig` object serves as the single, strongly-typed source
+of truth used to initialize the engine's BuildContext and ComponentFactory.
+"""
+
 from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field
