@@ -13,7 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class ComponentConfig(BaseModel):
-    """Machinery: Base for pluggable modules."""
+    """Base for pluggable modules."""
 
     model_config = ConfigDict(extra="forbid", validate_default=True)
 
@@ -23,20 +23,20 @@ class ComponentConfig(BaseModel):
 
 
 class SourceConfig(ComponentConfig):
-    """Machinery: Intent for data ingestion."""
+    """Data ingestion component metadata"""
 
-    name: str = Field(..., min_length=1)
+    name: str = Field(..., min_length=1)  # min_length=1 enforces a non-empty string
     path: str | None = None
 
 
 class StorageConfig(ComponentConfig):
-    """Machinery: Intent for data persistence."""
+    """Intent for data persistence."""
 
     root_path: str = "artifacts/datasets"
 
 
 class DatasetConfig(BaseModel):
-    """Metadata: Describes the 'What' of the output."""
+    """Describes the core data of the output."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -45,14 +45,24 @@ class DatasetConfig(BaseModel):
     description: str | None = None
 
 
+class ContractConfig(BaseModel):
+    """Defines the expected canonical data formats."""
+
+    model_config = ConfigDict(extra="forbid", validate_default=True)
+
+    schema_version: str = Field(..., min_length=1)
+    ontology_version: str = Field(..., min_length=1)
+
+
 class RootConfig(BaseModel):
-    """The Root: Aggregates Identity, Metadata, and Machinery."""
+    """Aggregates all of the above info into a final RootConfig object"""
 
     model_config = ConfigDict(extra="forbid", validate_default=True)
 
     project_name: str = Field(..., min_length=1)
     dataset: DatasetConfig
     source: SourceConfig
+    contract: ContractConfig
     storage: StorageConfig
 
     annotators: list[ComponentConfig] = Field(default_factory=list)
