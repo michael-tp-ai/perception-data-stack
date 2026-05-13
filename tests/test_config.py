@@ -20,6 +20,7 @@ def test_nested_validation_failure() -> None:
         "dataset": {"name": "test_ds", "version": "1.0"},  # INVALID SEMVER
         "source": {"name": "s", "type": "t"},
         "storage": {"type": "local"},
+        "contract": {"schema_version": "v0", "ontology_version": "v0"},
     }
     with pytest.raises(ValidationError) as excinfo:
         RootConfig(**data)
